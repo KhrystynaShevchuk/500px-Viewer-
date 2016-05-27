@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Uzw-lO-yGi">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -16,10 +16,43 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pAe-po-LEw">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </scrollView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="pAe-po-LEw" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Iv4-If-uWe"/>
+                            <constraint firstItem="pAe-po-LEw" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="KbL-iT-21S"/>
+                            <constraint firstAttribute="trailing" secondItem="pAe-po-LEw" secondAttribute="trailing" id="R85-3F-ITa"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="pAe-po-LEw" secondAttribute="bottom" id="ZIP-Z1-ce3"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="289-1x-y4t"/>
+                    <connections>
+                        <outlet property="scrollView" destination="pAe-po-LEw" id="tx0-LT-P6k"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1499" y="367"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="5pT-nf-8hK">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Uzw-lO-yGi" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="evA-yw-zbm">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="gL8-XQ-oCd"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EfB-ri-DXq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="687" y="367"/>
         </scene>
