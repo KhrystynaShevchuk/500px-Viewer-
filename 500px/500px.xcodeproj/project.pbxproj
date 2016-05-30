@@ -88,6 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				A9625FDC1CF885D000D8A9C1 /* WelcomeItemView */,
+				A98BC7FE1CF84F3D00564AC8 /* ViewControllers */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -205,7 +206,6 @@
 			isa = PBXGroup;
 			children = (
 				A9625FD81CF8855800D8A9C1 /* CustomViews */,
-				A98BC7FE1CF84F3D00564AC8 /* ViewControllers */,
 				A98BC8041CF8547100564AC8 /* Storyboards */,
 			);
 			name = Presentation;
@@ -217,7 +217,8 @@
 			children = (
 				A9625FD61CF8572200D8A9C1 /* WelcomeVC.swift */,
 			);
-			path = ViewControllers;
+			name = ViewControllers;
+			path = ../ViewControllers;
 			sourceTree = "<group>";
 		};
 		A98BC8011CF853CD00564AC8 /* Resourses */ = {

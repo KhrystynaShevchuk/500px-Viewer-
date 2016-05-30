@@ -20,18 +20,46 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pAe-po-LEw">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </scrollView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iCo-xg-23r" userLabel="Start Button" colorLabel="IBBuiltInLabel-Blue">
+                                <rect key="frame" x="265" y="520" width="69" height="33"/>
+                                <color key="backgroundColor" red="0.56069416552430273" green="0.69353356746584349" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="33" id="T8V-Ok-WxK"/>
+                                    <constraint firstAttribute="width" constant="69" id="oBS-hk-jaW"/>
+                                </constraints>
+                                <state key="normal" title="START">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" red="0.47632789937521758" green="0.66434875452353492" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="startButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="AGz-lm-F8W"/>
+                                </connections>
+                            </button>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="leW-fc-CF4">
+                                <rect key="frame" x="281" y="562" width="39" height="37"/>
+                                <color key="backgroundColor" red="1" green="0.1022875992" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="352" id="7JX-tb-FB4"/>
+                                </constraints>
+                            </pageControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="leW-fc-CF4" firstAttribute="top" secondItem="iCo-xg-23r" secondAttribute="bottom" constant="9" id="3Bv-R8-123"/>
                             <constraint firstItem="pAe-po-LEw" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Iv4-If-uWe"/>
                             <constraint firstItem="pAe-po-LEw" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="KbL-iT-21S"/>
                             <constraint firstAttribute="trailing" secondItem="pAe-po-LEw" secondAttribute="trailing" id="R85-3F-ITa"/>
+                            <constraint firstItem="iCo-xg-23r" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="SoO-lq-P4E"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="pAe-po-LEw" secondAttribute="bottom" id="ZIP-Z1-ce3"/>
+                            <constraint firstItem="leW-fc-CF4" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="hTc-Nd-hE2"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="leW-fc-CF4" secondAttribute="bottom" constant="1" id="p27-gj-kxd"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="289-1x-y4t"/>
                     <connections>
+                        <outlet property="pageControl" destination="leW-fc-CF4" id="Ax0-qz-SDX"/>
                         <outlet property="scrollView" destination="pAe-po-LEw" id="tx0-LT-P6k"/>
+                        <outlet property="startButton" destination="iCo-xg-23r" id="z18-sN-QA1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

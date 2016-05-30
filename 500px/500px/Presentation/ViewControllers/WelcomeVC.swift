@@ -11,6 +11,8 @@ import UIKit
 class WelcomeVC: UIViewController {
 
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var pageControl: UIPageControl!
+    @IBOutlet weak var startButton: UIButton!
     
     var items = [WelcomeItem]()
     let welcomeManager = WelcomeManager()
@@ -27,10 +29,19 @@ class WelcomeVC: UIViewController {
         super.viewDidAppear(animated)
         
         setupScrollView()
+        configurePageControl()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent
+    }
+    
+    @IBAction func startButtonAction(sender: AnyObject) {
+        
     }
     
     // MARK: - Private
@@ -43,7 +54,7 @@ class WelcomeVC: UIViewController {
         
         scrollView.backgroundColor = UIColor.blackColor()
         scrollView.contentSize = CGSizeMake(width * CGFloat(screenAmount), height)
-        print(scrollView.contentSize.width, scrollView.contentSize.height)
+        scrollView.delegate = self
         
         for i in 0..<screenAmount {
             let item = items[i]
@@ -56,5 +67,23 @@ class WelcomeVC: UIViewController {
             
             scrollView.addSubview(welcomeItemView)
         }
+    }
+    
+    func configurePageControl() {
+        startButton.hidden = true
+        
+        pageControl.numberOfPages = items.count
+        pageControl.currentPage = 0  // Set the initial page.
+    }
+}
+
+// MARK: - UIScrollViewDelegate
+
+extension WelcomeVC: UIScrollViewDelegate {
+
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        let currentPage = floor(scrollView.contentOffset.x / UIScreen.mainScreen().bounds.size.width);
+        pageControl.currentPage = Int(currentPage)
+        startButton.hidden = (pageControl.currentPage != items.count - 1)
     }
 }
