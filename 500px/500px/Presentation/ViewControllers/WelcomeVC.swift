@@ -14,22 +14,25 @@ class WelcomeVC: UIViewController {
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var startButton: UIButton!
     
-    var items = [WelcomeItem]()
+    var items = [WelcomeItem]() {
+        didSet {
+            setupScrollView()
+            configurePageControl()
+        }
+    }
+    
     let welcomeManager = WelcomeManager()
     
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        items = welcomeManager.getWelcomeItems()
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        setupScrollView()
-        configurePageControl()
+        items = welcomeManager.getWelcomeItems()
     }
 
     override func didReceiveMemoryWarning() {
