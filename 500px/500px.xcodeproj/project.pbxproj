@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		756CBF84EBA6FB178473D207 /* Pods_500pxUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB8161C54CF940D8C5A59AE9 /* Pods_500pxUITests.framework */; };
+		A92926F01CFEEEB000152A51 /* Photo+Convert.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92926EF1CFEEEB000152A51 /* Photo+Convert.swift */; };
+		A92926F41CFF484F00152A51 /* CollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92926F31CFF484F00152A51 /* CollectionVC.swift */; };
+		A92926F61CFF490C00152A51 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92926F51CFF490C00152A51 /* CollectionViewCell.swift */; };
 		A92AE7561CFDB4E000184DDF /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92AE7551CFDB4E000184DDF /* Photo.swift */; };
 		A92AE75A1CFDB68500184DDF /* BaseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92AE7591CFDB68500184DDF /* BaseAPI.swift */; };
 		A92AE75D1CFDCD7100184DDF /* URLFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92AE75C1CFDCD7100184DDF /* URLFactory.swift */; };
@@ -54,6 +57,9 @@
 		5D886ECE80DA7F4F8E91D85F /* Pods-500pxUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-500pxUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-500pxUITests/Pods-500pxUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		6B63CA0B261815F92C5A918F /* Pods-500pxTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-500pxTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-500pxTests/Pods-500pxTests.release.xcconfig"; sourceTree = "<group>"; };
 		6FC596BC583E84E8DEAE4B6A /* Pods-500pxTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-500pxTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-500pxTests/Pods-500pxTests.debug.xcconfig"; sourceTree = "<group>"; };
+		A92926EF1CFEEEB000152A51 /* Photo+Convert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Photo+Convert.swift"; sourceTree = "<group>"; };
+		A92926F31CFF484F00152A51 /* CollectionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionVC.swift; sourceTree = "<group>"; };
+		A92926F51CFF490C00152A51 /* CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		A92AE7541CFDAF7400184DDF /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = MyPlayground.playground; path = ../MyPlayground.playground; sourceTree = "<group>"; };
 		A92AE7551CFDB4E000184DDF /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		A92AE7591CFDB68500184DDF /* BaseAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseAPI.swift; sourceTree = "<group>"; };
@@ -180,6 +186,7 @@
 			children = (
 				A9625FE61CF89B2D00D8A9C1 /* WelcomeItem.swift */,
 				A92AE7551CFDB4E000184DDF /* Photo.swift */,
+				A92926EF1CFEEEB000152A51 /* Photo+Convert.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -286,6 +293,7 @@
 			isa = PBXGroup;
 			children = (
 				A9625FD61CF8572200D8A9C1 /* WelcomeVC.swift */,
+				A92926F31CFF484F00152A51 /* CollectionVC.swift */,
 			);
 			name = ViewControllers;
 			path = ../ViewControllers;
@@ -304,6 +312,7 @@
 			children = (
 				A98BC8051CF8547100564AC8 /* LaunchScreen.storyboard */,
 				A98BC8061CF8547100564AC8 /* Main.storyboard */,
+				A92926F51CFF490C00152A51 /* CollectionViewCell.swift */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -571,12 +580,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A92926F01CFEEEB000152A51 /* Photo+Convert.swift in Sources */,
 				A92AE7561CFDB4E000184DDF /* Photo.swift in Sources */,
 				A9625FE31CF8952E00D8A9C1 /* UIView+Load.swift in Sources */,
 				A9625FD71CF8572200D8A9C1 /* WelcomeVC.swift in Sources */,
 				A9625FEB1CF8A0F000D8A9C1 /* WelcomeManager.swift in Sources */,
 				A9625FE71CF89B2D00D8A9C1 /* WelcomeItem.swift in Sources */,
 				A92AE75D1CFDCD7100184DDF /* URLFactory.swift in Sources */,
+				A92926F41CFF484F00152A51 /* CollectionVC.swift in Sources */,
+				A92926F61CFF490C00152A51 /* CollectionViewCell.swift in Sources */,
 				A92AE75A1CFDB68500184DDF /* BaseAPI.swift in Sources */,
 				A9625FE01CF885F900D8A9C1 /* WelcomeItenView.swift in Sources */,
 				A98BC7FA1CF84E5200564AC8 /* AppDelegate.swift in Sources */,

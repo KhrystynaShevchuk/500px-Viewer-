@@ -1,0 +1,20 @@
+# Uncomment this line to define a global platform for your project
+# platform :ios, '9.0'
+
+target '500px' do
+  pod 'SwiftyJSON', :git => 'https://github.com/SwiftyJSON/SwiftyJSON.git'
+use_frameworks!
+  
+  # Pods for 500px
+
+  target '500pxTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target '500pxUITests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+end

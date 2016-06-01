@@ -15,7 +15,6 @@ extension UIView {
         if let views = NSBundle.mainBundle().loadNibNamed(nibName, owner: nil, options: nil) {
             loadedView = views.last as? UIView
         }
-        
         return loadedView
     }
 }

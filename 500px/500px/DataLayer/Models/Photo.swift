@@ -14,11 +14,5 @@ class Photo {
     var id: Int?
     var name: String?
     var imageURL: String?
-        
-    required init() {
-//        let json = JSONValue(dataFromNetwork)
-//        self.id = json.id
-//        self.name = json.name
-//        self.imageURL = json.imageURL
-    }
+
 }

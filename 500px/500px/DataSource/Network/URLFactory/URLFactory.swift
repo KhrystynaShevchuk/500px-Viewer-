@@ -10,14 +10,12 @@ import Foundation
 
 class URLFactory {
     
-    let baseURL = "https://api.500px.com"
-//    let consumerKey = "SvNiDuU76T8cVlJnP7P6QBOrfMsmEHB87XBVBrTO"
+    private let baseURL = "https://api.500px.com"
+    private let consumerKey = "consumer_key"
+    private let consumerKeyValue = "SvNiDuU76T8cVlJnP7P6QBOrfMsmEHB87XBVBrTO"
+    private let baseImageURL = "/v1/photos?feature=popular"
 
-    func generateURL(path: String) -> String {
-        return "\(baseURL)\(path)"
-    }
-    
-    func urlReceiveImage(link: String) -> String {
-        return link
+    func downloadPhotos() -> String {
+        return "\(baseURL)\(baseImageURL)&\(consumerKey)=\(consumerKeyValue)"
     }
 }
