@@ -83,25 +83,32 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="UXG-nb-vgu">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="z9h-3I-4aH">
-                                    <size key="itemSize" width="157" height="157"/>
+                                    <size key="itemSize" width="100" height="100"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CollectionViewCell" id="NHi-Y3-tsN" customClass="CollectionViewCell" customModule="_00px" customModuleProvider="target">
-                                        <rect key="frame" x="10" y="74" width="157" height="157"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" reuseIdentifier="CollectionViewCell" id="NHi-Y3-tsN" customClass="CollectionViewCell" customModule="_00px" customModuleProvider="target">
+                                        <rect key="frame" x="10" y="74" width="100" height="100"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="157" height="157"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xOq-He-GIf">
-                                                    <rect key="frame" x="0.0" y="0.0" width="157" height="157"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xOq-He-GIf">
+                                                    <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                                 </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <color key="backgroundColor" red="1" green="0.92557399890000003" blue="0.01106877805" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="xOq-He-GIf" secondAttribute="trailing" id="VJI-Xi-bIp"/>
+                                            <constraint firstAttribute="bottom" secondItem="xOq-He-GIf" secondAttribute="bottom" id="YO1-Xf-xu6"/>
+                                            <constraint firstItem="xOq-He-GIf" firstAttribute="leading" secondItem="NHi-Y3-tsN" secondAttribute="leading" id="rsG-b6-uCu"/>
+                                            <constraint firstItem="xOq-He-GIf" firstAttribute="top" secondItem="NHi-Y3-tsN" secondAttribute="top" id="uQ8-W4-d8Q"/>
+                                        </constraints>
                                         <connections>
                                             <outlet property="iconImageView" destination="xOq-He-GIf" id="507-2i-mMB"/>
                                         </connections>

@@ -8,26 +8,51 @@
 
 import UIKit
 
-class CollectionVC: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class CollectionVC: UIViewController {
     
     @IBOutlet weak var photosCollectionView: UICollectionView!
     
     var photos = [Photo]()
+    let photosApi = PhotosAPI()
+    var editModeEnabled = false
     
     private let reuseIdentifier = "CollectionViewCell"
-    //    private let sectionInsets = UIEdgeInsets(top: 10.0, left: 10.0, bottom: 20.0, right: 10.0)
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        photosApi.downloadPhotos { (photos) in
+            self.photos = photos
+            
+           dispatch_async(dispatch_get_main_queue(), { 
+                self.photosCollectionView.reloadData()
+           })
+        }
     }
+}
+
+extension CollectionVC: UICollectionViewDataSource, UICollectionViewDelegate {
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return photos.count
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let  cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! CollectionViewCell
-        
+        let  cell : CollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! CollectionViewCell
+                
         return cell
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        
+        let screenSize = UIScreen.mainScreen().bounds
+        let itemWidth = screenSize.width / 3 - 15
+        return CGSizeMake(itemWidth, itemWidth)
+    }
+    
+    func collectionView(collectionView: UICollectionView, didEndDisplayingCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
+        
+        let photo = photos[indexPath.row]
+        print("item \(photo.id) became invisible ")
     }
 }

@@ -159,7 +159,6 @@
 			isa = PBXGroup;
 			children = (
 				A9625FDC1CF885D000D8A9C1 /* WelcomeItemView */,
-				A98BC7FE1CF84F3D00564AC8 /* ViewControllers */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -282,6 +281,7 @@
 		A98BC7FD1CF84F3D00564AC8 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				A98BC7FE1CF84F3D00564AC8 /* ViewControllers */,
 				A9625FD81CF8855800D8A9C1 /* CustomViews */,
 				A98BC8041CF8547100564AC8 /* Storyboards */,
 			);
@@ -295,8 +295,7 @@
 				A9625FD61CF8572200D8A9C1 /* WelcomeVC.swift */,
 				A92926F31CFF484F00152A51 /* CollectionVC.swift */,
 			);
-			name = ViewControllers;
-			path = ../ViewControllers;
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		A98BC8011CF853CD00564AC8 /* Resourses */ = {

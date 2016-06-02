@@ -31,5 +31,4 @@ class PhotosAPI: BaseAPI {
             completion(photos: photos)
         }
     }
-    
 }
