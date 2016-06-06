@@ -14,5 +14,6 @@ class Photo {
     var id: Int?
     var name: String?
     var imageURL: String?
-
+    
+    var image: UIImage?
 }
