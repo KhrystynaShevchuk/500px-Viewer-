@@ -68,6 +68,47 @@
             </objects>
             <point key="canvasLocation" x="1183" y="737"/>
         </scene>
+        <!--ModalVC-->
+        <scene sceneID="dRU-JT-TMN">
+            <objects>
+                <viewController id="z2H-ZI-tyu" customClass="ModalVC" customModule="_00px" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ZMg-h6-dXg"/>
+                        <viewControllerLayoutGuide type="bottom" id="fvE-EN-27r"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="unp-2c-UgG">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="thc-LM-mEL">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="w1j-Cc-gy2" appends="YES" id="JaB-XE-D3X"/>
+                                </connections>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="thc-LM-mEL" firstAttribute="leading" secondItem="unp-2c-UgG" secondAttribute="leadingMargin" constant="-20" id="UDF-Xf-gNT"/>
+                            <constraint firstItem="thc-LM-mEL" firstAttribute="top" secondItem="ZMg-h6-dXg" secondAttribute="bottom" constant="-20" id="emd-qK-EX1"/>
+                            <constraint firstItem="fvE-EN-27r" firstAttribute="top" secondItem="thc-LM-mEL" secondAttribute="bottom" id="xLT-Rk-JzD"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="thc-LM-mEL" secondAttribute="trailing" constant="-20" id="xZm-IV-fo0"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="photoImageView" destination="thc-LM-mEL" id="eFh-9q-fge"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3jO-IR-1fl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="w1j-Cc-gy2">
+                    <connections>
+                        <action selector="tapGesture:" destination="z2H-ZI-tyu" id="Ivf-7T-mFx"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="2592" y="735"/>
+        </scene>
         <!--CollectionVC-->
         <scene sceneID="DCk-eO-OoG">
             <objects>
@@ -130,6 +171,7 @@
                     </view>
                     <connections>
                         <outlet property="photosCollectionView" destination="UXG-nb-vgu" id="zUR-vs-B3S"/>
+                        <segue destination="z2H-ZI-tyu" kind="presentation" identifier="modalViewSegue" id="vQ1-8k-HAv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="09J-IJ-PQ6" userLabel="First Responder" sceneMemberID="firstResponder"/>

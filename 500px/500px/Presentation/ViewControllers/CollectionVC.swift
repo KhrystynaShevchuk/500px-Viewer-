@@ -12,9 +12,10 @@ class CollectionVC: UIViewController {
     
     @IBOutlet weak var photosCollectionView: UICollectionView!
     
-    let imageManager = ImageManager()
+    var imageManager = ImageManager()
     
     var photos = [Photo]()
+    var selectedPhoto : Photo?
     let photosApi = PhotosAPI()
     var editModeEnabled = false
     
@@ -52,6 +53,22 @@ extension CollectionVC: UICollectionViewDataSource, UICollectionViewDelegate {
         }
         
         return cell
+    }
+    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        selectedPhoto = photos[indexPath.row]
+        performSegueWithIdentifier("modalViewSegue", sender: nil)
+
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "modalViewSegue" {
+            print(selectedPhoto)
+
+            if let vc = segue.destinationViewController as? ModalVC {
+                vc.photo = selectedPhoto
+            }
+        }
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
