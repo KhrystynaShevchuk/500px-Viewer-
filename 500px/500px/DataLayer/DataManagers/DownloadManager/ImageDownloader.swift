@@ -33,8 +33,11 @@ class ImageDownloader: NSOperation {
             return
         }
         
+        // Data is downloaded
         if imageData?.length > 0 {
+                        
             if let imageData = imageData {
+                FileSystem().saveFile("image\(photo.id ?? 0)", data: imageData)
                 photo.image = UIImage(data: imageData)
             }
             print("downloaded")
@@ -43,5 +46,4 @@ class ImageDownloader: NSOperation {
             print("failed")
         }
     }
-
 }

@@ -5,6 +5,24 @@ import UIKit
 var str = "Hello, playground"
 
 
+var test = [String : String]()
+test ["r"] = "test1"
+test ["t"] = "test2"
+test ["y"] = "test3"
+
+print(test)
+
+
+print(test["r"])
+
+test.removeValueForKey("r")
+
+print(test)
+
+
+
+
+
 //func returnData() -> (data: NSData?, statusCode: Int)  {
 //    return (NSData(), 300)
 //}
@@ -15,27 +33,27 @@ var str = "Hello, playground"
 //
 //executeURL("", completion: returnData())
 
-func showInputAlert(text: String, isValid: (input: String?) -> Bool) {
-    if isValid(input: text) {
-        print("correct")
-    }
-    else {
-        print("not correct")
-    }
-}
-
-
-func isUsernameValid(input: String?) -> Bool {
-    return input == "Alex"
-}
-
-func isEmailValid(input: String?) -> Bool {
-    return input == "alex@gmail.com"
-}
-
-
-showInputAlert("Alex", isValid: isUsernameValid)
-
-
+//func showInputAlert(text: String, isValid: (input: String?) -> Bool) {
+//    if isValid(input: text) {
+//        print("correct")
+//    }
+//    else {
+//        print("not correct")
+//    }
+//}
+//
+//
+//func isUsernameValid(input: String?) -> Bool {
+//    return input == "Alex"
+//}
+//
+//func isEmailValid(input: String?) -> Bool {
+//    return input == "alex@gmail.com"
+//}
+//
+//
+//showInputAlert("Alex", isValid: isUsernameValid)
+//
+//
 
 

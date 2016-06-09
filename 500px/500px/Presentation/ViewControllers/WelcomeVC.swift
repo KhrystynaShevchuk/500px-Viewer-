@@ -73,10 +73,18 @@ class WelcomeVC: UIViewController {
     }
     
     func configurePageControl() {
+        if pageControl.currentPage != 0 {
+            return
+        }
+        
         startButton.hidden = true
         
         pageControl.numberOfPages = items.count
-        pageControl.currentPage = 0  // Set the initial page.
+        pageControl.currentPage = 0
+    }
+    
+    private func checkButtonVisibility() {
+        startButton.hidden = (pageControl.currentPage != items.count - 1)
     }
 }
 
@@ -87,6 +95,6 @@ extension WelcomeVC: UIScrollViewDelegate {
     func scrollViewDidScroll(scrollView: UIScrollView) {
         let currentPage = floor(scrollView.contentOffset.x / UIScreen.mainScreen().bounds.size.width);
         pageControl.currentPage = Int(currentPage)
-        startButton.hidden = (pageControl.currentPage != items.count - 1)
+        checkButtonVisibility()
     }
 }

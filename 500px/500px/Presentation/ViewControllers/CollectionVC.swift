@@ -12,6 +12,8 @@ class CollectionVC: UIViewController {
     
     @IBOutlet weak var photosCollectionView: UICollectionView!
     
+    let imageManager = ImageManager()
+    
     var photos = [Photo]()
     let photosApi = PhotosAPI()
     var editModeEnabled = false
@@ -42,10 +44,11 @@ extension CollectionVC: UICollectionViewDataSource, UICollectionViewDelegate {
         
         let photo = photos[indexPath.row]
         cell.iconImageView.image = photo.image
-        DownloadManager.shared.startDownload(photo) {
-            dispatch_async(dispatch_get_main_queue(), { 
+        
+        imageManager.updatePhotoWithImage(photo) { 
+            dispatch_async(dispatch_get_main_queue(), {
                 cell.iconImageView.image = photo.image
-            })
+            })    
         }
         
         return cell
@@ -59,8 +62,11 @@ extension CollectionVC: UICollectionViewDataSource, UICollectionViewDelegate {
     }
     
     func collectionView(collectionView: UICollectionView, didEndDisplayingCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
-        	
         let photo = photos[indexPath.row]
         print("item \(photo.id) became invisible ")
+
+        let key = photo.imageURL ?? ""
+        
+        DownloadManager.shared.cancelDownloadIfPossible(key)
     }
 }

@@ -17,7 +17,7 @@ class DownloadManager {
     
     init() {
         queue.name = "Image Downloader Queue"
-        queue.maxConcurrentOperationCount = 2
+        queue.maxConcurrentOperationCount = 3
     }
     
     func startDownload(photo: Photo, completion:() -> ()) {
@@ -37,5 +37,14 @@ class DownloadManager {
         
         downloadsInProgress[url] = imageDownload
         queue.addOperation(imageDownload)
+    }
+    
+    func cancelDownloadIfPossible(key: String) {
+        guard let task = downloadsInProgress[key] else {
+            return
+        }
+        
+        task.cancel()
+        downloadsInProgress.removeValueForKey(key)
     }
 }
