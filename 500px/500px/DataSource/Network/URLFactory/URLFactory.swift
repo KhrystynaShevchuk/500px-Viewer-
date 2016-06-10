@@ -13,7 +13,7 @@ class URLFactory {
     private let baseURL = "https://api.500px.com"
     private let consumerKey = "consumer_key"
     private let consumerKeyValue = "SvNiDuU76T8cVlJnP7P6QBOrfMsmEHB87XBVBrTO"
-    private let baseImageURL = "/v1/photos?feature=popular&rpp=100"
+    private let baseImageURL = "/v1/photos?feature=popular&rpp=100&image_size[]=2&image_size[]=5"
 
     func downloadPhotos() -> String {
         return "\(baseURL)\(baseImageURL)&\(consumerKey)=\(consumerKeyValue)"
