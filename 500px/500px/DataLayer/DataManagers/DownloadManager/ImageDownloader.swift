@@ -1,3 +1,4 @@
+
 //
 //  ImageDownloader.swift
 //  500px
@@ -11,9 +12,13 @@ import UIKit
 
 class ImageDownloader: NSOperation {
 
-    let photo: Photo
+    let url: String
+    let photo: Photo?
+    let imageSize: ImageSize
     
-    init(photo: Photo) {
+    init(url: String, imageSize: ImageSize, photo: Photo) {
+        self.url = url
+        self.imageSize = imageSize
         self.photo = photo
     }
     
@@ -24,7 +29,7 @@ class ImageDownloader: NSOperation {
         }
         
         var imageData: NSData?
-        if let url = NSURL(string: photo.imageURL ?? "") {
+        if let url = NSURL(string: url ?? "") {
             imageData = NSData(contentsOfURL:url)
         }
         
@@ -35,15 +40,32 @@ class ImageDownloader: NSOperation {
         
         // Data is downloaded
         if imageData?.length > 0 {
-                        
-            if let imageData = imageData {
-                FileSystem().saveFile("image\(photo.id ?? 0)", data: imageData)
-                photo.image = UIImage(data: imageData)
-            }
+            let name = photo?.fileName(imageSize)
+            saveReceivedImage(imageData, name: name)
+
             print("downloaded")
         }
         else {
             print("failed")
+        }
+    }
+    
+    private func saveReceivedImage(imageData: NSData?, name: String?) {
+        guard let imageData = imageData else {
+            return
+        }
+        
+        guard let name = name else {
+            return
+        }
+        
+        let image = UIImage(data: imageData)
+        FileSystem().saveFile(name, data: imageData)
+        
+        if imageSize == .Small {
+            photo?.smallImage = image
+        } else if imageSize == .Big {
+            photo?.bigImage = image
         }
     }
 }

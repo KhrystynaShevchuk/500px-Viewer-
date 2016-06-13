@@ -14,39 +14,48 @@ class ModalVC: UIViewController {
     @IBOutlet weak var scrollImageView: UIScrollView!
     @IBOutlet weak var photoImageView: UIImageView!
 
-    var photo : Photo? = nil
-    
-    var zoomGesture = UIPinchGestureRecognizer()
+    var photo : Photo?
+    let imageManager = ImageManager()
     
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        photoImageView.image = photo?.image
-        photoImageView.reloadInputViews()
-        photoImageView.userInteractionEnabled = true
-        
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(ModalVC.tapGesture))
-        tapGesture.numberOfTapsRequired = 1
-        photoImageView.addGestureRecognizer(tapGesture)
-        
+        loadBigPhoto()
+        addTapGesture()
         setupZoom()
-    }
-
-    // MARK: - Actions
-
-    func tapGesture() {
-        self.dismissViewControllerAnimated(true, completion: nil)
-        print("TAPPED")
     }
     
     // MARK: - Private
-
+    
+    private func loadBigPhoto() {
+        photoImageView.image = photo?.smallImage
+        imageManager.updatePhoto(photo, withImageSize: .Big, completion: {
+            dispatch_async(dispatch_get_main_queue(), {
+                self.photoImageView.image = self.photo?.bigImage
+            })
+        })
+    }
+    
+    private func addTapGesture() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(ModalVC.tapGestureAction))
+        tapGesture.numberOfTapsRequired = 1
+        photoImageView.addGestureRecognizer(tapGesture)
+        photoImageView.userInteractionEnabled = true
+    }
+    
     private func setupZoom() {
         scrollImageView.minimumZoomScale = 1.0
         scrollImageView.maximumZoomScale = 3.0
         scrollImageView.delegate = self
+    }
+
+    // MARK: - Actions
+
+    func tapGestureAction() {
+        self.dismissViewControllerAnimated(true, completion: nil)
+        print("TAPPED")
     }
 }
 

@@ -17,12 +17,18 @@ extension Photo {
         if let id = json["id"].int {
             photo.id = id
         }
+        
         if let name = json["name"].string {
             photo.name = name
         }
-        if let imageURL = json["image_url"].string {
-            photo.imageURL = imageURL
+        
+        if let imageURL = json["image_url"].array {
+            if imageURL.count >= 2 {
+                photo.smallImageURL = String(imageURL[0])
+                photo.bigImageURL = String(imageURL[1])
+            }
         }
+        
         return photo
     }
 }

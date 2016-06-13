@@ -14,7 +14,6 @@ class WelcomeItem {
     var image: UIImage?
     
     init() {
-    
     }
     
     init(title: String?, image: UIImage?) {

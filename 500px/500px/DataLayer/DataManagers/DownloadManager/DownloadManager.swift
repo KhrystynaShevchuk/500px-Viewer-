@@ -20,16 +20,12 @@ class DownloadManager {
         queue.maxConcurrentOperationCount = 3
     }
     
-    func startDownload(photo: Photo, completion:() -> ()) {
-        guard let url = photo.imageURL else {
-            return
-        }
-        
+    func startDownload(photo: Photo, url: String, imageSize: ImageSize, completion:() -> ()) {
         if let _ = downloadsInProgress[url] {
             return
         }
         
-        let imageDownload = ImageDownloader(photo: photo)
+        let imageDownload = ImageDownloader(url: url, imageSize: imageSize, photo: photo)
         imageDownload.completionBlock = {
             completion()
             print("Completed downloading url \(url)")

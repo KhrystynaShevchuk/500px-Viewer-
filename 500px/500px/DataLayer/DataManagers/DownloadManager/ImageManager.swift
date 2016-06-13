@@ -11,21 +11,27 @@ import UIKit
 
 class ImageManager {
     
-    func updatePhotoWithImage (photo: Photo?, completion:() -> () ) {
+    func updatePhoto (photo: Photo?, withImageSize imageSize: ImageSize, completion:() -> () ) {
         guard let photo = photo else {
             return
         }
         
-        let name = "image\(photo.id ?? 0)"
+        let name = photo.fileName(imageSize) ?? ""
         
-        if let data = FileSystem().getFile(name) {   
-            photo.image = UIImage(data: data)
+        if let data = FileSystem().getFile(name) {
+            let image = UIImage(data: data)
+            if imageSize == .Small {
+                photo.smallImage = image
+            } else if imageSize == .Big {
+                photo.bigImage = image
+            }
             completion()
 
         } else {
-            DownloadManager.shared.startDownload(photo) {
+            let url = (imageSize == .Small) ? photo.smallImageURL : photo.bigImageURL
+            DownloadManager.shared.startDownload(photo, url: url ?? "", imageSize: imageSize, completion: {
                 completion()
-            }
-        }        
+            })
+        }
     }
 }

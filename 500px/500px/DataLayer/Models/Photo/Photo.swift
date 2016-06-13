@@ -13,7 +13,10 @@ class Photo {
     
     var id: Int?
     var name: String?
-    var imageURL: String?
     
-    var image: UIImage?
+    var smallImageURL: String?
+    var bigImageURL: String?
+    
+    var smallImage: UIImage?
+    var bigImage: UIImage?
 }

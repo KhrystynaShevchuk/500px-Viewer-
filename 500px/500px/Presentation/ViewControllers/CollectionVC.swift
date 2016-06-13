@@ -14,25 +14,37 @@ class CollectionVC: UIViewController {
     
     var imageManager = ImageManager()
     
-    var photos = [Photo]()
+    var photos = [Photo]() {
+        didSet {
+            dispatch_async(dispatch_get_main_queue(), {
+                self.photosCollectionView.reloadData()
+            })
+        }
+    }
+    
     var selectedPhoto : Photo?
     let photosApi = PhotosAPI()
-    var editModeEnabled = false
     
     private let reuseIdentifier = "CollectionViewCell"
     
+    // MARK: - Lifecycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        loadData()
+    }
+    
+    // MARK: - Private
+    
+    private func loadData() {
         photosApi.downloadPhotos { (photos) in
             self.photos = photos
-            
-           dispatch_async(dispatch_get_main_queue(), { 
-                self.photosCollectionView.reloadData()
-           })
         }
     }
 }
+
+// MARK: - UICollectionView
 
 extension CollectionVC: UICollectionViewDataSource, UICollectionViewDelegate {
     
@@ -41,16 +53,15 @@ extension CollectionVC: UICollectionViewDataSource, UICollectionViewDelegate {
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let  cell : CollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! CollectionViewCell
-        
+        let cell : CollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! CollectionViewCell
         let photo = photos[indexPath.row]
-        cell.iconImageView.image = photo.image
         
-        imageManager.updatePhotoWithImage(photo) { 
-            dispatch_async(dispatch_get_main_queue(), {
-                cell.iconImageView.image = photo.image
-            })    
-        }
+        cell.iconImageView.image = photo.smallImage
+        imageManager.updatePhoto(photo, withImageSize: .Small, completion: {
+            dispatch_async(dispatch_get_main_queue(), { 
+                cell.iconImageView.image = photo.smallImage
+            })
+        })
         
         return cell
     }
@@ -58,13 +69,10 @@ extension CollectionVC: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         selectedPhoto = photos[indexPath.row]
         performSegueWithIdentifier("modalViewSegue", sender: nil)
-
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "modalViewSegue" {
-            print(selectedPhoto)
-
             if let vc = segue.destinationViewController as? ModalVC {
                 vc.photo = selectedPhoto
             }
@@ -72,9 +80,11 @@ extension CollectionVC: UICollectionViewDataSource, UICollectionViewDelegate {
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        
+        let itemsInRow: CGFloat = 3
+        let padding: CGFloat = 15
         let screenSize = UIScreen.mainScreen().bounds
-        let itemWidth = screenSize.width / 3 - 15
+        let itemWidth = screenSize.width / itemsInRow - padding
+        
         return CGSizeMake(itemWidth, itemWidth)
     }
     
@@ -82,8 +92,7 @@ extension CollectionVC: UICollectionViewDataSource, UICollectionViewDelegate {
         let photo = photos[indexPath.row]
         print("item \(photo.id) became invisible ")
 
-        let key = photo.imageURL ?? ""
-        
+        let key = photo.smallImageURL ?? ""
         DownloadManager.shared.cancelDownloadIfPossible(key)
     }
 }
