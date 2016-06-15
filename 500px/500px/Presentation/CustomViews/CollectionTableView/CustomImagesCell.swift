@@ -8,32 +8,44 @@
 
 import UIKit
 
+let imageViewCount: Int = 3
+
 class CustomImagesCell: UITableViewCell {
     
-    var imageView1: UIImageView?
-    var imageView2: UIImageView?
-    var imageView3: UIImageView?
-    var width = UIScreen.mainScreen().bounds.size.width
-    var height = UIScreen.mainScreen().bounds.size.height
-    let padding: CGFloat = 6
+    var imageViews = [UIImageView]()
+    let width = UIScreen.mainScreen().bounds.size.width
+    let height = UIScreen.mainScreen().bounds.size.height
+    let padding: CGFloat = 10
     
-
     override func awakeFromNib() {
         super.awakeFromNib()
-        let imageWidth = (width - padding) / 3
-        let xPosition = (imageWidth + padding)
-                
-        imageView1 = UIImageView(frame: CGRect(x: 0, y: 0, width: imageWidth, height: imageWidth))
-        contentView.addSubview(imageView1!)
-        imageView2 = UIImageView(frame: CGRect(x: xPosition, y: 0, width: imageWidth, height: imageWidth))
-        contentView.addSubview(imageView2!)
-        imageView3 = UIImageView(frame: CGRect(x: (xPosition * 2), y: 0, width: imageWidth, height: imageWidth))
-        contentView.addSubview(imageView3!)
+       
+        let widthForPaddings = padding * CGFloat(imageViewCount - 1)
+        let imageWidth = (width - widthForPaddings) / CGFloat(imageViewCount)
+        let widthToNextView = imageWidth + padding
+        
+        for index in 0..<imageViewCount {
+            let xPosition: CGFloat = CGFloat(index) * widthToNextView
+            
+            let imageView = UIImageView(frame: CGRect(x: xPosition, y: 0, width: imageWidth, height: imageWidth))
+            imageView.backgroundColor = UIColor.clearColor()
+            
+            imageViews.append(imageView)
+            self.addSubview(imageView)
+            
+//            imageView.userInteractionEnabled = true
+//            let tapRecognizer = UITapGestureRecognizer(target: imageView, action: #selector(CustomImagesCell.imageTapped))
+//            imageView.addGestureRecognizer(tapRecognizer)
+            
+        }
     }
-
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    
+//    @objc private func imageTapped(gestureRecognizer: UITapGestureRecognizer) {
+//        let tappedImageView = gestureRecognizer.view!
+//        tappedImageView.accessibilityPerformMagicTap()
+//    }
+    
+    static func cellHeight() -> CGFloat {
+        return UIScreen.mainScreen().bounds.size.width / CGFloat(imageViewCount)
     }
 }

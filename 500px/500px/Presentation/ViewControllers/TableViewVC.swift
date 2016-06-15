@@ -15,6 +15,10 @@ class TableViewVC: UIViewController {
     
     let photosApi = PhotosAPI()
     let imageManager = ImageManager()
+    var selectedPhoto : Photo?
+    var indexOfImageView: Int = 0
+    
+    private let reuseIdentifier = "CustomImagesCell"
     
     var photos = [Photo]() {
         didSet {
@@ -24,43 +28,82 @@ class TableViewVC: UIViewController {
         }
     }
     
+    // MARK: - Lifecycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
         loadData()
+        tableViewReloadData()
         
-        tableViewImageCollect.delegate = self
-        tableViewImageCollect.dataSource = self
-        tableViewImageCollect.rowHeight = UITableViewAutomaticDimension
-        tableViewImageCollect.registerNib(UINib(nibName: "CustomImagesCell", bundle: nil), forCellReuseIdentifier: "CustomImagesCell")
-        
-        tableViewImageCollect.reloadData()
     }
     
+    // MARK: - Private
+
     private func loadData() {
         photosApi.downloadPhotos { (photos) in
             self.photos = photos
         }
     }
-
     
+    private func tableViewReloadData() {
+        tableViewImageCollect.delegate = self
+        tableViewImageCollect.dataSource = self
+        tableViewImageCollect.rowHeight = CustomImagesCell.cellHeight()
+        tableViewImageCollect.registerNib(UINib(nibName: reuseIdentifier, bundle: nil), forCellReuseIdentifier: "CustomImagesCell")
+    }
 }
+
+   //  UITableView
 
 extension TableViewVC: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return photos.count
+        let count = ceil(CGFloat(photos.count) / CGFloat(imageViewCount))
+        return Int(count)
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell: CustomImagesCell = tableView.dequeueReusableCellWithIdentifier("CustomImagesCell", forIndexPath: indexPath) as! CustomImagesCell
-
-        var photo = photos[indexPath.row]
-        cell.imageView1?.image = photo.smallImage
-        cell.imageView2?.image = photo.smallImage
-        cell.imageView3?.image = photo.smallImage
-
+        let cell: CustomImagesCell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier, forIndexPath: indexPath) as! CustomImagesCell
+        let currentIndex = indexPath.row * imageViewCount
         
+        
+        for index in 0..<imageViewCount {
+            let imageView = cell.imageViews[index]
+            let verifyIndex = currentIndex + index
+            
+            if verifyIndex < photos.count {
+                let photo = photos[verifyIndex]
+                indexOfImageView = index
+                imageManager.updatePhoto(photo, withImageSize: .Small, completion: {
+                    dispatch_async(dispatch_get_main_queue(), {
+                        imageView.image = photo.smallImage
+                    })
+                })
+                imageView.image = photo.smallImage
+            } else {
+                cell.imageViews[index].image = nil
+            }            
+        }
+
         return cell
     }
+    
+//    func tableView(tableView: UITableView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+//        selectedPhoto = photos[indexPath.row * imageViewCount + indexOfImageView]
+//        performSegueWithIdentifier("modalViewSegueFromCell", sender: nil)
+//    }
+//    
+//    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+//        selectedPhoto = photos[indexPath.row]
+//        performSegueWithIdentifier("modalViewSegueFromCell", sender: nil)
+//    }
+//    
+//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+//        if segue.identifier == "modalViewSegueFromCell" {
+//            if let vc = segue.destinationViewController as? ModalVC {
+//                vc.photo = selectedPhoto
+//            }
+//        }
+//    }
 }

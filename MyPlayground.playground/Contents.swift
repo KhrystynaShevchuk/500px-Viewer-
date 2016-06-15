@@ -20,6 +20,11 @@ test.removeValueForKey("r")
 print(test)
 
 
+let amount: CGFloat = 100
+let inARow: CGFloat = 7
+
+let cellsAmount = ceil(amount / inARow)
+
 
 
 
