@@ -88,22 +88,4 @@ extension TableViewVC: UITableViewDataSource, UITableViewDelegate {
 
         return cell
     }
-    
-//    func tableView(tableView: UITableView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-//        selectedPhoto = photos[indexPath.row * imageViewCount + indexOfImageView]
-//        performSegueWithIdentifier("modalViewSegueFromCell", sender: nil)
-//    }
-//    
-//    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-//        selectedPhoto = photos[indexPath.row]
-//        performSegueWithIdentifier("modalViewSegueFromCell", sender: nil)
-//    }
-//    
-//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        if segue.identifier == "modalViewSegueFromCell" {
-//            if let vc = segue.destinationViewController as? ModalVC {
-//                vc.photo = selectedPhoto
-//            }
-//        }
-//    }
 }

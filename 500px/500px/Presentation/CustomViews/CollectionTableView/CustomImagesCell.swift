@@ -8,9 +8,11 @@
 
 import UIKit
 
-let imageViewCount: Int = 3
+let imageViewCount: Int = 5
 
 class CustomImagesCell: UITableViewCell {
+    
+    @IBOutlet weak var tappableView: UIView!
     
     var imageViews = [UIImageView]()
     let width = UIScreen.mainScreen().bounds.size.width
@@ -24,6 +26,9 @@ class CustomImagesCell: UITableViewCell {
         let imageWidth = (width - widthForPaddings) / CGFloat(imageViewCount)
         let widthToNextView = imageWidth + padding
         
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(CustomImagesCell.imageTapped(_:)))
+        tappableView.addGestureRecognizer(tapRecognizer)
+        
         for index in 0..<imageViewCount {
             let xPosition: CGFloat = CGFloat(index) * widthToNextView
             
@@ -31,19 +36,19 @@ class CustomImagesCell: UITableViewCell {
             imageView.backgroundColor = UIColor.clearColor()
             
             imageViews.append(imageView)
-            self.addSubview(imageView)
-            
-//            imageView.userInteractionEnabled = true
-//            let tapRecognizer = UITapGestureRecognizer(target: imageView, action: #selector(CustomImagesCell.imageTapped))
-//            imageView.addGestureRecognizer(tapRecognizer)
-            
+            insertSubview(imageView, atIndex: 1)
         }
     }
     
-//    @objc private func imageTapped(gestureRecognizer: UITapGestureRecognizer) {
-//        let tappedImageView = gestureRecognizer.view!
-//        tappedImageView.accessibilityPerformMagicTap()
-//    }
+    func imageTapped(gestureRecognizer: UITapGestureRecognizer) {
+        let tapPoint = gestureRecognizer.locationInView(self.tappableView)
+        let imageViewWidth = width / CGFloat(imageViewCount)
+
+        let indexPosition = Int(tapPoint.x / imageViewWidth)
+        print("width \(width) , position \(tapPoint.x), calc \(indexPosition) ")
+        
+        print(tapPoint.x, tapPoint.y)
+    }
     
     static func cellHeight() -> CGFloat {
         return UIScreen.mainScreen().bounds.size.width / CGFloat(imageViewCount)

@@ -13,9 +13,24 @@
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="320" height="51"/>
                 <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Msw-yx-m8L">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="51"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </view>
+                </subviews>
                 <color key="backgroundColor" red="0.36726883560000001" green="1" blue="0.093601039550000001" alpha="1" colorSpace="calibratedRGB"/>
                 <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="Msw-yx-m8L" secondAttribute="trailing" id="2dT-mz-cDr"/>
+                    <constraint firstItem="Msw-yx-m8L" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="AJ2-7Q-qbw"/>
+                    <constraint firstAttribute="bottom" secondItem="Msw-yx-m8L" secondAttribute="bottom" id="bWL-4B-33s"/>
+                    <constraint firstItem="Msw-yx-m8L" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="ewh-s9-hTQ"/>
+                </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="tappableView" destination="Msw-yx-m8L" id="Hbc-O4-Tf1"/>
+            </connections>
             <point key="canvasLocation" x="354" y="418"/>
         </tableViewCell>
     </objects>
