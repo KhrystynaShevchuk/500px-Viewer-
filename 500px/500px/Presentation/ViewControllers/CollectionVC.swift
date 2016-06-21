@@ -13,6 +13,8 @@ class CollectionVC: UIViewController {
     @IBOutlet weak var photosCollectionView: UICollectionView!
     
     var imageManager = ImageManager()
+    let popupView = UIView.loadView("CustomInfoView") as! CustomInfoView
+    let screenSize = UIScreen.mainScreen().bounds
     
     var photos = [Photo]() {
         didSet {
@@ -33,6 +35,9 @@ class CollectionVC: UIViewController {
         super.viewDidLoad()
         
         loadData()
+        
+        makePopupViewVisible(false)
+        view.addSubview(popupView)
     }
     
     // MARK: - Private
@@ -41,6 +46,27 @@ class CollectionVC: UIViewController {
         photosApi.downloadPhotos { (photos) in
             self.photos = photos
         }
+    }
+    
+    func makePopupViewVisible(isViewVisible: Bool) -> UIView {
+        
+        if isViewVisible == true {
+            
+            let yPosition = screenSize.height - screenSize.width/2
+            popupView.infoTextView.text = "Image name:\n\t\(selectedPhoto?.name ?? "")\n\nDescription:\n\t\(selectedPhoto?.description ?? "-")\n\nCreating date:\n\t\(selectedPhoto?.createdAt ?? "-")"
+            UIView.animateWithDuration(0.7, delay: 1.0, options: .CurveEaseOut, animations: {
+                self.popupView.frame = CGRect(x: 0, y: yPosition, width: self.screenSize.width, height: self.screenSize.width)
+                }, completion: { finished in
+            })
+            
+        } else {
+            
+            popupView.infoTextView.text = nil
+            let yPosition = screenSize.height
+            popupView.frame = CGRect(x: 0, y: yPosition, width: screenSize.width, height: 0)
+        }
+        
+        return popupView
     }
 }
 
@@ -54,7 +80,9 @@ extension CollectionVC: UICollectionViewDataSource, UICollectionViewDelegate {
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell : CollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! CollectionViewCell
+        cell.delegate = self
         let photo = photos[indexPath.row]
+        cell.index = indexPath.row
         
         cell.iconImageView.image = photo.smallImage
         imageManager.updatePhoto(photo, withImageSize: .Small, completion: {
@@ -94,5 +122,14 @@ extension CollectionVC: UICollectionViewDataSource, UICollectionViewDelegate {
 
         let key = photo.smallImageURL ?? ""
         DownloadManager.shared.cancelDownloadIfPossible(key)
+    }
+}
+
+extension CollectionVC: ImageInfoDelegate {
+    
+    func infoAboutPhoto(index: Int) {
+        selectedPhoto = photos[index]
+        
+        makePopupViewVisible(true)
     }
 }

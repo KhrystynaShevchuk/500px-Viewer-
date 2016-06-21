@@ -29,7 +29,7 @@ class TableViewVC: UIViewController {
     }
     
     // MARK: - Lifecycle
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -39,7 +39,7 @@ class TableViewVC: UIViewController {
     }
     
     // MARK: - Private
-
+    
     private func loadData() {
         photosApi.downloadPhotos { (photos) in
             self.photos = photos
@@ -50,11 +50,11 @@ class TableViewVC: UIViewController {
         tableViewImageCollect.delegate = self
         tableViewImageCollect.dataSource = self
         tableViewImageCollect.rowHeight = CustomImagesCell.cellHeight()
-        tableViewImageCollect.registerNib(UINib(nibName: reuseIdentifier, bundle: nil), forCellReuseIdentifier: "CustomImagesCell")
+        tableViewImageCollect.registerNib(UINib(nibName: reuseIdentifier, bundle: nil), forCellReuseIdentifier: reuseIdentifier)
     }
 }
 
-   //  UITableView
+     //  UITableView
 
 extension TableViewVC: UITableViewDataSource, UITableViewDelegate {
     
@@ -65,13 +65,14 @@ extension TableViewVC: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell: CustomImagesCell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier, forIndexPath: indexPath) as! CustomImagesCell
+        cell.delegate = self
+        
         let currentIndex = indexPath.row * imageViewCount
-        
-        
         for index in 0..<imageViewCount {
             let imageView = cell.imageViews[index]
             let verifyIndex = currentIndex + index
-            
+            cell.index = verifyIndex
+
             if verifyIndex < photos.count {
                 let photo = photos[verifyIndex]
                 indexOfImageView = index
@@ -83,9 +84,26 @@ extension TableViewVC: UITableViewDataSource, UITableViewDelegate {
                 imageView.image = photo.smallImage
             } else {
                 cell.imageViews[index].image = nil
-            }            
+            }
         }
-
+        
         return cell
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "modalViewSegueFromCell" {
+            if let vc = segue.destinationViewController as? ModalVC {
+                vc.photo = selectedPhoto
+            }
+        }
+    }
+}
+
+extension TableViewVC: ImagePickerDelegate {
+    
+    func selectedImage(index: Int) -> Void {
+        selectedPhoto = photos[index]
+        
+        performSegueWithIdentifier("modalViewSegueFromCell", sender: nil)
     }
 }

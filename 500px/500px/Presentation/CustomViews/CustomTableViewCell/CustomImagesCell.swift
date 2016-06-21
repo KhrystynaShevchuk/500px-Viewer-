@@ -8,17 +8,25 @@
 
 import UIKit
 
-let imageViewCount: Int = 5
+protocol ImagePickerDelegate: class {
+    
+    func selectedImage(index: Int)
+}
+
+let imageViewCount: Int = 3
 
 class CustomImagesCell: UITableViewCell {
     
     @IBOutlet weak var tappableView: UIView!
     
+    weak var delegate: ImagePickerDelegate?
+    var index: Int?
+    
     var imageViews = [UIImageView]()
     let width = UIScreen.mainScreen().bounds.size.width
     let height = UIScreen.mainScreen().bounds.size.height
     let padding: CGFloat = 10
-    
+        
     override func awakeFromNib() {
         super.awakeFromNib()
        
@@ -28,6 +36,7 @@ class CustomImagesCell: UITableViewCell {
         
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(CustomImagesCell.imageTapped(_:)))
         tappableView.addGestureRecognizer(tapRecognizer)
+        
         
         for index in 0..<imageViewCount {
             let xPosition: CGFloat = CGFloat(index) * widthToNextView
@@ -46,6 +55,8 @@ class CustomImagesCell: UITableViewCell {
 
         let indexPosition = Int(tapPoint.x / imageViewWidth)
         print("width \(width) , position \(tapPoint.x), calc \(indexPosition) ")
+        
+        delegate?.selectedImage(index!)
         
         print(tapPoint.x, tapPoint.y)
     }

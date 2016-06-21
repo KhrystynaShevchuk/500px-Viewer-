@@ -44,7 +44,7 @@ class WelcomeVC: UIViewController {
     }
     
     @IBAction func startButtonAction(sender: AnyObject) {
-        performSegueWithIdentifier("segueToTableView", sender: self)
+        performSegueWithIdentifier("segueToCollection", sender: self)
     }
     
     // MARK: - Private

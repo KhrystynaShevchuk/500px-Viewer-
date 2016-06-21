@@ -83,10 +83,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nxa-YN-4zd">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nxa-YN-4zd">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="thc-LM-mEL">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="thc-LM-mEL">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                         <gestureRecognizers/>
                                     </imageView>
@@ -146,7 +146,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xOq-He-GIf">
+                                                <imageView contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xOq-He-GIf">
                                                     <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                                 </imageView>
                                             </subviews>
@@ -218,7 +218,7 @@
                     </view>
                     <connections>
                         <outlet property="tableViewImageCollect" destination="QvE-mG-Tg8" id="weo-Z8-Ir8"/>
-                        <segue destination="z2H-ZI-tyu" kind="show" identifier="modalViewSegueFromCell" id="Y4f-Zd-Uo6"/>
+                        <segue destination="z2H-ZI-tyu" kind="presentation" identifier="modalViewSegueFromCell" id="Y4f-Zd-Uo6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m5Y-WC-WSo" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -245,6 +245,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Y4f-Zd-Uo6"/>
+        <segue reference="vQ1-8k-HAv"/>
     </inferredMetricsTieBreakers>
 </document>

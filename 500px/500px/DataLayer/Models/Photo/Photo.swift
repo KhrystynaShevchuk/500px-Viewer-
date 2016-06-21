@@ -13,6 +13,8 @@ class Photo {
     
     var id: Int?
     var name: String?
+    var description: String?
+    var createdAt: String?
     
     var smallImageURL: String?
     var bigImageURL: String?

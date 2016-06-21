@@ -22,6 +22,14 @@ extension Photo {
             photo.name = name
         }
         
+        if let description = json["description"].string {
+            photo.description = description
+        }
+        
+        if let createdAt = json["createdAt"].string {
+            photo.createdAt = createdAt
+        }
+        
         if let imageURL = json["image_url"].array {
             if imageURL.count >= 2 {
                 photo.smallImageURL = String(imageURL[0])
