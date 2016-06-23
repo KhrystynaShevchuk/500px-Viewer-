@@ -54,7 +54,7 @@ class CollectionVC: UIViewController {
         
         if isViewVisible == true {
             
-            popupView.infoTextView.text = "Image name:\n\t\(selectedPhoto?.name ?? "")\n\nDescription:\n\t\(selectedPhoto?.description ?? "-")\n\nCreating date:\n\t\(selectedPhoto?.createdAt ?? "-")"
+            popupView.infoTextView.text = selectedPhoto?.getDescription()
             yPosition = screenSize.height - screenSize.width/2
             setCustomInfoView(yPosition)
             

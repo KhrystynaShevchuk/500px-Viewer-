@@ -33,7 +33,7 @@
 		A9699FD91D06E01300D1C197 /* NSFileManager+documents&caches.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9699FD81D06E01300D1C197 /* NSFileManager+documents&caches.swift */; };
 		A9699FDB1D06E45F00D1C197 /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9699FDA1D06E45F00D1C197 /* ImageManager.swift */; };
 		A9699FDF1D06F90700D1C197 /* FileSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9699FDE1D06F90700D1C197 /* FileSystem.swift */; };
-		A98BC7D91CF834A400564AC8 /* _00pxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A98BC7D81CF834A400564AC8 /* _00pxTests.swift */; };
+		A98BC7D91CF834A400564AC8 /* URLTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A98BC7D81CF834A400564AC8 /* URLTests.swift */; };
 		A98BC7E41CF834A400564AC8 /* _00pxUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A98BC7E31CF834A400564AC8 /* _00pxUITests.swift */; };
 		A98BC7FA1CF84E5200564AC8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A98BC7F91CF84E5200564AC8 /* AppDelegate.swift */; };
 		A98BC8031CF853CD00564AC8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A98BC8021CF853CD00564AC8 /* Assets.xcassets */; };
@@ -96,11 +96,11 @@
 		A9699FD81D06E01300D1C197 /* NSFileManager+documents&caches.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSFileManager+documents&caches.swift"; sourceTree = "<group>"; };
 		A9699FDA1D06E45F00D1C197 /* ImageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
 		A9699FDE1D06F90700D1C197 /* FileSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileSystem.swift; sourceTree = "<group>"; };
-		A98BC7C01CF834A400564AC8 /* 500px.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 500px.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		A98BC7D41CF834A400564AC8 /* 500pxTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = 500pxTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		A98BC7D81CF834A400564AC8 /* _00pxTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _00pxTests.swift; sourceTree = "<group>"; };
+		A98BC7C01CF834A400564AC8 /* p500px.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = p500px.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A98BC7D41CF834A400564AC8 /* pp500px.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = pp500px.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A98BC7D81CF834A400564AC8 /* URLTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLTests.swift; sourceTree = "<group>"; };
 		A98BC7DA1CF834A400564AC8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A98BC7DF1CF834A400564AC8 /* 500pxUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = 500pxUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A98BC7DF1CF834A400564AC8 /* pp500px.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = pp500px.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A98BC7E31CF834A400564AC8 /* _00pxUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _00pxUITests.swift; sourceTree = "<group>"; };
 		A98BC7E51CF834A400564AC8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A98BC7F91CF84E5200564AC8 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -300,9 +300,9 @@
 		A98BC7C11CF834A400564AC8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A98BC7C01CF834A400564AC8 /* 500px.app */,
-				A98BC7D41CF834A400564AC8 /* 500pxTests.xctest */,
-				A98BC7DF1CF834A400564AC8 /* 500pxUITests.xctest */,
+				A98BC7C01CF834A400564AC8 /* p500px.app */,
+				A98BC7D41CF834A400564AC8 /* pp500px.xctest */,
+				A98BC7DF1CF834A400564AC8 /* pp500px.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -323,7 +323,7 @@
 		A98BC7D71CF834A400564AC8 /* 500pxTests */ = {
 			isa = PBXGroup;
 			children = (
-				A98BC7D81CF834A400564AC8 /* _00pxTests.swift */,
+				A98BC7D81CF834A400564AC8 /* URLTests.swift */,
 				A98BC7DA1CF834A400564AC8 /* Info.plist */,
 			);
 			path = 500pxTests;
@@ -398,9 +398,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		A98BC7BF1CF834A400564AC8 /* 500px */ = {
+		A98BC7BF1CF834A400564AC8 /* p500px */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A98BC7E81CF834A400564AC8 /* Build configuration list for PBXNativeTarget "500px" */;
+			buildConfigurationList = A98BC7E81CF834A400564AC8 /* Build configuration list for PBXNativeTarget "p500px" */;
 			buildPhases = (
 				44C8135304711D41BF6A6788 /* 📦 Check Pods Manifest.lock */,
 				A98BC7BC1CF834A400564AC8 /* Sources */,
@@ -413,14 +413,14 @@
 			);
 			dependencies = (
 			);
-			name = 500px;
+			name = p500px;
 			productName = 500px;
-			productReference = A98BC7C01CF834A400564AC8 /* 500px.app */;
+			productReference = A98BC7C01CF834A400564AC8 /* p500px.app */;
 			productType = "com.apple.product-type.application";
 		};
-		A98BC7D31CF834A400564AC8 /* 500pxTests */ = {
+		A98BC7D31CF834A400564AC8 /* p500pxTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A98BC7EB1CF834A400564AC8 /* Build configuration list for PBXNativeTarget "500pxTests" */;
+			buildConfigurationList = A98BC7EB1CF834A400564AC8 /* Build configuration list for PBXNativeTarget "p500pxTests" */;
 			buildPhases = (
 				613CA3D94D5EE0F46D6297C0 /* 📦 Check Pods Manifest.lock */,
 				A98BC7D01CF834A400564AC8 /* Sources */,
@@ -434,14 +434,14 @@
 			dependencies = (
 				A98BC7D61CF834A400564AC8 /* PBXTargetDependency */,
 			);
-			name = 500pxTests;
+			name = p500pxTests;
 			productName = 500pxTests;
-			productReference = A98BC7D41CF834A400564AC8 /* 500pxTests.xctest */;
+			productReference = A98BC7D41CF834A400564AC8 /* pp500px.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		A98BC7DE1CF834A400564AC8 /* 500pxUITests */ = {
+		A98BC7DE1CF834A400564AC8 /* p500pxUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A98BC7EE1CF834A400564AC8 /* Build configuration list for PBXNativeTarget "500pxUITests" */;
+			buildConfigurationList = A98BC7EE1CF834A400564AC8 /* Build configuration list for PBXNativeTarget "p500pxUITests" */;
 			buildPhases = (
 				3B44F3760AD8E64D879768AA /* 📦 Check Pods Manifest.lock */,
 				A98BC7DB1CF834A400564AC8 /* Sources */,
@@ -454,9 +454,9 @@
 			dependencies = (
 				A98BC7E11CF834A400564AC8 /* PBXTargetDependency */,
 			);
-			name = 500pxUITests;
+			name = p500pxUITests;
 			productName = 500pxUITests;
-			productReference = A98BC7DF1CF834A400564AC8 /* 500pxUITests.xctest */;
+			productReference = A98BC7DF1CF834A400564AC8 /* pp500px.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -482,7 +482,7 @@
 					};
 				};
 			};
-			buildConfigurationList = A98BC7BB1CF834A400564AC8 /* Build configuration list for PBXProject "500px" */;
+			buildConfigurationList = A98BC7BB1CF834A400564AC8 /* Build configuration list for PBXProject "p500px" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -495,9 +495,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A98BC7BF1CF834A400564AC8 /* 500px */,
-				A98BC7D31CF834A400564AC8 /* 500pxTests */,
-				A98BC7DE1CF834A400564AC8 /* 500pxUITests */,
+				A98BC7BF1CF834A400564AC8 /* p500px */,
+				A98BC7D31CF834A400564AC8 /* p500pxTests */,
+				A98BC7DE1CF834A400564AC8 /* p500pxUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -691,7 +691,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A98BC7D91CF834A400564AC8 /* _00pxTests.swift in Sources */,
+				A98BC7D91CF834A400564AC8 /* URLTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -708,12 +708,12 @@
 /* Begin PBXTargetDependency section */
 		A98BC7D61CF834A400564AC8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = A98BC7BF1CF834A400564AC8 /* 500px */;
+			target = A98BC7BF1CF834A400564AC8 /* p500px */;
 			targetProxy = A98BC7D51CF834A400564AC8 /* PBXContainerItemProxy */;
 		};
 		A98BC7E11CF834A400564AC8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = A98BC7BF1CF834A400564AC8 /* 500px */;
+			target = A98BC7BF1CF834A400564AC8 /* p500px */;
 			targetProxy = A98BC7E01CF834A400564AC8 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -813,7 +813,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.khrystynashevchuk.-00px";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = p500px;
 			};
 			name = Debug;
 		};
@@ -826,7 +826,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.khrystynashevchuk.-00px";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = p500px;
 			};
 			name = Release;
 		};
@@ -838,8 +838,8 @@
 				INFOPLIST_FILE = 500pxTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.khrystynashevchuk.-00pxTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/500px.app/500px";
+				PRODUCT_NAME = pp500px;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/p500px.app/p500px";
 			};
 			name = Debug;
 		};
@@ -851,8 +851,8 @@
 				INFOPLIST_FILE = 500pxTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.khrystynashevchuk.-00pxTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/500px.app/500px";
+				PRODUCT_NAME = pp500px;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/p500px.app/p500px";
 			};
 			name = Release;
 		};
@@ -863,7 +863,7 @@
 				INFOPLIST_FILE = 500pxUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.khrystynashevchuk.-00pxUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = pp500px;
 				TEST_TARGET_NAME = 500px;
 			};
 			name = Debug;
@@ -875,7 +875,7 @@
 				INFOPLIST_FILE = 500pxUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.khrystynashevchuk.-00pxUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = pp500px;
 				TEST_TARGET_NAME = 500px;
 			};
 			name = Release;
@@ -883,7 +883,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		A98BC7BB1CF834A400564AC8 /* Build configuration list for PBXProject "500px" */ = {
+		A98BC7BB1CF834A400564AC8 /* Build configuration list for PBXProject "p500px" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A98BC7E61CF834A400564AC8 /* Debug */,
@@ -892,7 +892,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A98BC7E81CF834A400564AC8 /* Build configuration list for PBXNativeTarget "500px" */ = {
+		A98BC7E81CF834A400564AC8 /* Build configuration list for PBXNativeTarget "p500px" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A98BC7E91CF834A400564AC8 /* Debug */,
@@ -901,7 +901,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A98BC7EB1CF834A400564AC8 /* Build configuration list for PBXNativeTarget "500pxTests" */ = {
+		A98BC7EB1CF834A400564AC8 /* Build configuration list for PBXNativeTarget "p500pxTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A98BC7EC1CF834A400564AC8 /* Debug */,
@@ -910,7 +910,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A98BC7EE1CF834A400564AC8 /* Build configuration list for PBXNativeTarget "500pxUITests" */ = {
+		A98BC7EE1CF834A400564AC8 /* Build configuration list for PBXNativeTarget "p500pxUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A98BC7EF1CF834A400564AC8 /* Debug */,

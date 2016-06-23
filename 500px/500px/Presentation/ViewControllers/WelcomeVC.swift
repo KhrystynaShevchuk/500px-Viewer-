@@ -61,15 +61,19 @@ class WelcomeVC: UIViewController {
         
         for i in 0..<screenAmount {
             let item = items[i]
-            
-            let welcomeItemView = UIView.loadView("WelcomeItenView") as! WelcomeItenView
-            welcomeItemView.iconImageView.image = item.image
-            welcomeItemView.imageDescriptionLabel.text = item.title
-            let xPosition = width * CGFloat(i)
-            welcomeItemView.frame = CGRect(x: xPosition, y: 0, width: width, height: height)
-            
+
+            let welcomeItemView = getItemView(item, index: i, width: width, height: height)
             scrollView.addSubview(welcomeItemView)
         }
+    }
+    
+    private func getItemView(item: WelcomeItem, index: Int, width: CGFloat, height: CGFloat) -> UIView {
+        let welcomeItemView = UIView.loadView("WelcomeItenView") as! WelcomeItenView
+        welcomeItemView.iconImageView.image = item.image
+        welcomeItemView.imageDescriptionLabel.text = item.title
+        let xPosition = width * CGFloat(index)
+        welcomeItemView.frame = CGRect(x: xPosition, y: 0, width: width, height: height)
+        return welcomeItemView
     }
     
     func configurePageControl() {

@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:500px.xcodeproj">
+      location = "group:/Users/khrystynashevchuk/Work/TechMagic/500px/500px/p500px.xcodeproj">
    </FileRef>
    <Group
       location = "container:"

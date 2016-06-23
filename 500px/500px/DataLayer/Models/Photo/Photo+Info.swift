@@ -21,4 +21,9 @@ extension Photo {
         
         return name
     }
+    
+    func getDescription() -> String {
+        let photoDescription = "Image name:\n\t\(name ?? "")\n\nDescription:\n\t\(description ?? "-")\n\nCreating date:\n\t\(createdAt ?? "-")"
+        return photoDescription
+    }
 }

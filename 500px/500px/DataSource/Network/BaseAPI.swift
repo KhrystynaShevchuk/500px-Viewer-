@@ -24,5 +24,4 @@ class BaseAPI {
             
         }).resume()
     }
-
 }
