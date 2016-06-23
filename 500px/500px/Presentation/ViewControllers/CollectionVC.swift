@@ -15,6 +15,7 @@ class CollectionVC: UIViewController {
     var imageManager = ImageManager()
     let popupView = UIView.loadView("CustomInfoView") as! CustomInfoView
     let screenSize = UIScreen.mainScreen().bounds
+    var yPosition: CGFloat = 0
     
     var photos = [Photo]() {
         didSet {
@@ -37,6 +38,7 @@ class CollectionVC: UIViewController {
         loadData()
         
         makePopupViewVisible(false)
+        addTapGesture()
         view.addSubview(popupView)
     }
     
@@ -48,25 +50,40 @@ class CollectionVC: UIViewController {
         }
     }
     
-    func makePopupViewVisible(isViewVisible: Bool) -> UIView {
+    private func makePopupViewVisible(isViewVisible: Bool) -> UIView {
         
         if isViewVisible == true {
             
-            let yPosition = screenSize.height - screenSize.width/2
             popupView.infoTextView.text = "Image name:\n\t\(selectedPhoto?.name ?? "")\n\nDescription:\n\t\(selectedPhoto?.description ?? "-")\n\nCreating date:\n\t\(selectedPhoto?.createdAt ?? "-")"
-            UIView.animateWithDuration(0.7, delay: 1.0, options: .CurveEaseOut, animations: {
-                self.popupView.frame = CGRect(x: 0, y: yPosition, width: self.screenSize.width, height: self.screenSize.width)
-                }, completion: { finished in
-            })
+            yPosition = screenSize.height - screenSize.width/2
+            setCustomInfoView(yPosition)
             
         } else {
             
-            popupView.infoTextView.text = nil
-            let yPosition = screenSize.height
-            popupView.frame = CGRect(x: 0, y: yPosition, width: screenSize.width, height: 0)
+            yPosition = screenSize.height
+            setCustomInfoView(yPosition)
         }
         
         return popupView
+    }
+    
+    private func setCustomInfoView(yPosition: CGFloat) {
+        UIView.animateWithDuration(0.7, delay: 1.0, options: .CurveEaseOut, animations: {
+            self.popupView.frame = CGRect(x: 0, y: yPosition, width: self.screenSize.width, height: self.screenSize.width)
+            }, completion: { finished in
+        })
+    }
+    
+    private func addTapGesture() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(CollectionVC.tapGestureAction))
+        tapGesture.numberOfTapsRequired = 1
+        popupView.addGestureRecognizer(tapGesture)
+        popupView.userInteractionEnabled = true
+    }
+    
+    @objc private func tapGestureAction() {
+        makePopupViewVisible(false)
+        print("TAPPED")
     }
 }
 

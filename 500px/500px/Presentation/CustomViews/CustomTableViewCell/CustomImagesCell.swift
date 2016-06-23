@@ -56,9 +56,7 @@ class CustomImagesCell: UITableViewCell {
         let indexPosition = Int(tapPoint.x / imageViewWidth)
         print("width \(width) , position \(tapPoint.x), calc \(indexPosition) ")
         
-        delegate?.selectedImage(index!)
-        
-        print(tapPoint.x, tapPoint.y)
+        delegate?.selectedImage(index!)        
     }
     
     static func cellHeight() -> CGFloat {
