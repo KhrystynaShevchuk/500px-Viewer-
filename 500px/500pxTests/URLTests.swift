@@ -12,6 +12,10 @@ import XCTest
 class URLTests: XCTestCase {
     
     let generateUrl = URLFactory()
+    let  fileSystem = FileSystem()
+    let welcomeManager = WelcomeManager()
+    var photos = [Photo]()
+    
     
     override func setUp() {
         super.setUp()
@@ -26,5 +30,19 @@ class URLTests: XCTestCase {
         let url = generateUrl.downloadPhotos()
         
         XCTAssertEqual(rightUrl, url, "it generates incorrect URL")
+    }
+    
+    func testPathString() {
+        let name = "smallImage160697069"
+        let pathStr = fileSystem.pathString(name)
+        
+        XCTAssertNotNil(pathStr, "PathString is nill")
+    }
+    
+    func testCountOfWelcomeItems() {
+        let items = welcomeManager.getWelcomeItems()
+        let count = items.count
+        
+        XCTAssertEqual(count, 3, "There is bad calculating of count")
     }
 }

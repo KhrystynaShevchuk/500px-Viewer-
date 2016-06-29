@@ -49,6 +49,7 @@ class WelcomeVC: UIViewController {
     
     // MARK: - Private
     
+    // todo - test
     private func setupScrollView() {
         let screenSize = UIScreen.mainScreen().bounds
         let width = screenSize.width
@@ -61,7 +62,6 @@ class WelcomeVC: UIViewController {
         
         for i in 0..<screenAmount {
             let item = items[i]
-
             let welcomeItemView = getItemView(item, index: i, width: width, height: height)
             scrollView.addSubview(welcomeItemView)
         }
@@ -71,9 +71,14 @@ class WelcomeVC: UIViewController {
         let welcomeItemView = UIView.loadView("WelcomeItenView") as! WelcomeItenView
         welcomeItemView.iconImageView.image = item.image
         welcomeItemView.imageDescriptionLabel.text = item.title
-        let xPosition = width * CGFloat(index)
-        welcomeItemView.frame = CGRect(x: xPosition, y: 0, width: width, height: height)
+        welcomeItemView.frame = viewFrame(index: index, width: width, height: height)
         return welcomeItemView
+    }
+    
+    // todo - test
+    func viewFrame(index index: Int, width: CGFloat, height: CGFloat) -> CGRect {
+        let xPosition = width * CGFloat(index)
+        return CGRect(x: xPosition, y: 0, width: width, height: height)
     }
     
     func configurePageControl() {
@@ -87,8 +92,9 @@ class WelcomeVC: UIViewController {
         pageControl.currentPage = 0
     }
     
-    private func checkButtonVisibility() {
-        startButton.hidden = (pageControl.currentPage != items.count - 1)
+    // todo - test
+    func isButtonVisible(currentPage: Int, totalCount: Int) -> Bool {
+        return currentPage != totalCount - 1
     }
 }
 
@@ -99,6 +105,7 @@ extension WelcomeVC: UIScrollViewDelegate {
     func scrollViewDidScroll(scrollView: UIScrollView) {
         let currentPage = floor(scrollView.contentOffset.x / UIScreen.mainScreen().bounds.size.width);
         pageControl.currentPage = Int(currentPage)
-        checkButtonVisibility()
+        
+        startButton.hidden = isButtonVisible(pageControl.currentPage, totalCount: items.count)
     }
 }

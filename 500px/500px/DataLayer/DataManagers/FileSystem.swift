@@ -11,16 +11,18 @@ import Foundation
 class FileSystem {
     
     func getFile(name: String) -> NSData? {
-        let path = NSFileManager.cachesDir() + "/\(name)"
-        print(path)
-        
-        return NSFileManager.defaultManager().contentsAtPath(path)
+        return NSFileManager.defaultManager().contentsAtPath(pathString(name))
     }
     
     func saveFile(name: String, data: NSData) {
+        NSFileManager.defaultManager().createFileAtPath(pathString(name), contents: data, attributes: nil)
+    }
+    
+    // todo - test
+    func pathString(name: String) -> String {
         let path = NSFileManager.cachesDir() + "/\(name)"
         print(path)
-        
-        NSFileManager.defaultManager().createFileAtPath(path, contents: data, attributes: nil)
+
+        return path
     }
 }

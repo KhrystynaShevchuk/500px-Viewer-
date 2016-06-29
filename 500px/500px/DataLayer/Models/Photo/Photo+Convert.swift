@@ -11,6 +11,7 @@ import SwiftyJSON
 
 extension Photo {
     
+    // todo - test
     class func photoFromResponse(json: JSON) -> Photo {
         let photo = Photo()
         

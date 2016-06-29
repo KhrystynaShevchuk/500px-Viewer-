@@ -27,7 +27,6 @@ let cellsAmount = ceil(amount / inARow)
 
 
 
-
 //func returnData() -> (data: NSData?, statusCode: Int)  {
 //    return (NSData(), 300)
 //}

@@ -8,6 +8,7 @@
 
 import Foundation
 
+// todo - test
 extension Photo {
     
     func fileName(imageSize: ImageSize) -> String? {
