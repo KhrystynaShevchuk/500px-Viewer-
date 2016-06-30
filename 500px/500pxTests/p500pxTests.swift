@@ -9,13 +9,16 @@
 import XCTest
 @testable import p500px
 
-class URLTests: XCTestCase {
+class p500pxTests: XCTestCase {
+    
+    // MARK: - properties
     
     let generateUrl = URLFactory()
     let  fileSystem = FileSystem()
     let welcomeManager = WelcomeManager()
     var photos = [Photo]()
     
+    // MARK: - general methods
     
     override func setUp() {
         super.setUp()
@@ -24,6 +27,8 @@ class URLTests: XCTestCase {
     override func tearDown() {
         super.tearDown()
     }
+    
+    // MARK: - Tests
     
     func testDownloadPhotos() {
         let rightUrl = "https://api.500px.com/v1/photos?feature=popular&rpp=100&image_size[]=2&image_size[]=5&consumer_key=SvNiDuU76T8cVlJnP7P6QBOrfMsmEHB87XBVBrTO"
@@ -44,5 +49,12 @@ class URLTests: XCTestCase {
         let count = items.count
         
         XCTAssertEqual(count, 3, "There is bad calculating of count")
+    }
+    
+    func testZeroCountOfWelcomeItems() {
+        let items = welcomeManager.getWelcomeItems()
+        let count = items.count
+        
+        XCTAssertFalse(count == 0, "Impossible count of welcomeItems")
     }
 }

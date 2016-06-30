@@ -12,5 +12,4 @@ class WelcomeItenView: UIView {
 
     @IBOutlet weak var imageDescriptionLabel: UILabel!
     @IBOutlet weak var iconImageView: UIImageView!
-    
 }

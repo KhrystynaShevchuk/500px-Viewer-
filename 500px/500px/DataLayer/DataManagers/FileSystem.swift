@@ -18,7 +18,6 @@ class FileSystem {
         NSFileManager.defaultManager().createFileAtPath(pathString(name), contents: data, attributes: nil)
     }
     
-    // todo - test
     func pathString(name: String) -> String {
         let path = NSFileManager.cachesDir() + "/\(name)"
         print(path)

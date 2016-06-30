@@ -49,7 +49,6 @@ class WelcomeVC: UIViewController {
     
     // MARK: - Private
     
-    // todo - test
     private func setupScrollView() {
         let screenSize = UIScreen.mainScreen().bounds
         let width = screenSize.width
@@ -67,7 +66,7 @@ class WelcomeVC: UIViewController {
         }
     }
     
-    private func getItemView(item: WelcomeItem, index: Int, width: CGFloat, height: CGFloat) -> UIView {
+    func getItemView(item: WelcomeItem, index: Int, width: CGFloat, height: CGFloat) -> UIView {
         let welcomeItemView = UIView.loadView("WelcomeItenView") as! WelcomeItenView
         welcomeItemView.iconImageView.image = item.image
         welcomeItemView.imageDescriptionLabel.text = item.title
@@ -75,7 +74,6 @@ class WelcomeVC: UIViewController {
         return welcomeItemView
     }
     
-    // todo - test
     func viewFrame(index index: Int, width: CGFloat, height: CGFloat) -> CGRect {
         let xPosition = width * CGFloat(index)
         return CGRect(x: xPosition, y: 0, width: width, height: height)
@@ -92,7 +90,6 @@ class WelcomeVC: UIViewController {
         pageControl.currentPage = 0
     }
     
-    // todo - test
     func isButtonVisible(currentPage: Int, totalCount: Int) -> Bool {
         return currentPage != totalCount - 1
     }

@@ -11,7 +11,6 @@ import SwiftyJSON
 
 extension Photo {
     
-    // todo - test
     class func photoFromResponse(json: JSON) -> Photo {
         let photo = Photo()
         
@@ -27,7 +26,7 @@ extension Photo {
             photo.description = description
         }
         
-        if let createdAt = json["createdAt"].string {
+        if let createdAt = json["created_at"].string {
             photo.createdAt = createdAt
         }
         
